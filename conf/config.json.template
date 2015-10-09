@@ -1,0 +1,19 @@
+{
+  "rabbitmq": {
+    "host": "localhost",
+    "vhost": "%%AMQP_VHOST%%",
+    "user": "%%AMQP_USER%%",
+    "password": "%%AMQP_PASSWORD%%"
+  },
+  "api": {
+    "host": "localhost",
+    "port": %%SENSU_API_PORT%%,
+    "user": "%%SENSU_API_USER%%",
+    "password": "%%SENSU_API_PASSWORD%%",
+  },
+  "client": {
+    "name": "%%SENSU_NAME%%",
+    "address": "%%SENSU_HOST%%",
+    "subscriptions": [ "test" ]
+  }
+}
