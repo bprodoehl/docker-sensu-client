@@ -1,0 +1,13 @@
+{
+  "rabbitmq": {
+    "host": "localhost",
+    "vhost": "/sensu",
+    "user": "myuser",
+    "password": "mysecret"
+  },
+  "client": {
+    "name": "client",
+    "address": "localhost",
+    "subscriptions": [ "test" ]
+  }
+}

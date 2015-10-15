@@ -17,7 +17,7 @@ RUN apt-get update
 RUN apt-get install -y sensu
 
 ### Configure Sensu
-ADD conf/config.json.template /etc/sensu/config.json.template
+ADD conf/config.json /etc/sensu/config.json.template
 
 ### Configure a Check
 ADD conf/check_memory.json /etc/sensu/conf.d/check_memory.json
@@ -30,6 +30,15 @@ ADD conf/check-memory.sh /etc/sensu/plugins/check-memory.sh
 RUN mkdir /root/sensu_certs
 ADD files/openssl.cnf /root/sensu_certs/openssl.cnf
 ADD files/ssl_certs.sh /root/sensu_certs/ssl_certs.sh
+
+### Install Node.js for config template filling
+RUN curl --silent --location https://deb.nodesource.com/setup_0.12 | bash -
+RUN apt-get install -y nodejs
+
+RUN mkdir -p /opt/config-filler
+ADD index.js /opt/config-filler/
+
+ADD conf/config.json /opt/
 
 ### Configure Runit
 RUN mkdir /etc/service/sensu-client
