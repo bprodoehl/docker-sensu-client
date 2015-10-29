@@ -43,4 +43,4 @@ ADD conf/config.json /opt/
 ### Configure Runit
 RUN mkdir /etc/service/sensu-client
 ADD runit/sensu-client.sh /etc/service/sensu-client/run
-ADD runit/generate-certs.sh /etc/my_init.d/010-generate-certs.sh
+#ADD runit/generate-certs.sh /etc/my_init.d/010-generate-certs.sh
