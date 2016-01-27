@@ -27,9 +27,9 @@ ADD conf/default_handler.json /etc/sensu/conf.d/default_handler.json
 ADD conf/check-memory.sh /etc/sensu/plugins/check-memory.sh
 
 ### Add scripts to generate TLS certs
-RUN mkdir /root/sensu_certs
-ADD files/openssl.cnf /root/sensu_certs/openssl.cnf
-ADD files/ssl_certs.sh /root/sensu_certs/ssl_certs.sh
+#RUN mkdir /root/sensu_certs
+#ADD files/openssl.cnf /root/sensu_certs/openssl.cnf
+#ADD files/ssl_certs.sh /root/sensu_certs/ssl_certs.sh
 
 ### Install Node.js for config template filling
 RUN curl --silent --location https://deb.nodesource.com/setup_0.12 | bash -
