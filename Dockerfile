@@ -14,7 +14,7 @@ RUN echo "deb http://repos.sensuapp.org/apt sensu main" | sudo tee /etc/apt/sour
 
 ### Install Sensu
 RUN apt-get update
-RUN apt-get install -y sensu python ruby pip
+RUN apt-get install -y sensu python ruby 
 
 ### Configure Sensu
 ADD conf/config.json /etc/sensu/config.json.template
