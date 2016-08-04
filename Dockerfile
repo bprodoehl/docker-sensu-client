@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.17
+FROM phusion/baseimage:0.9.18
 
 MAINTAINER Brian Prodoehl <bprodoehl@connectify.me>
 
@@ -9,12 +9,12 @@ RUN apt-get update && apt-get dist-upgrade -qy
 RUN apt-get install -y curl wget
 
 ### Install the Sensu Core Repository
-RUN wget -q http://repos.sensuapp.org/apt/pubkey.gpg -O- | sudo apt-key add -
-RUN echo "deb http://repos.sensuapp.org/apt sensu main" | sudo tee /etc/apt/sources.list.d/sensu.list
+RUN wget -q http://sensu.global.ssl.fastly.net/apt/pubkey.gpg -O- | apt-key add -
+RUN echo "deb http://sensu.global.ssl.fastly.net/apt sensu main" | tee /etc/apt/sources.list.d/sensu.list
 
 ### Install Sensu
 RUN apt-get update
-RUN apt-get install -y sensu python ruby 
+RUN apt-get install -y sensu python ruby
 
 ### Configure Sensu
 ADD conf/config.json /etc/sensu/config.json.template
@@ -32,7 +32,7 @@ ADD conf/check-memory.sh /etc/sensu/plugins/check-memory.sh
 #ADD files/ssl_certs.sh /root/sensu_certs/ssl_certs.sh
 
 ### Install Node.js for config template filling
-RUN curl --silent --location https://deb.nodesource.com/setup_0.12 | bash -
+RUN curl --silent --location https://deb.nodesource.com/setup_4.x | bash -
 RUN apt-get install -y nodejs
 
 RUN mkdir -p /opt/config-filler
